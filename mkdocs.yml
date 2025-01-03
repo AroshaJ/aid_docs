@@ -7,6 +7,10 @@ repo_name: aroshaj/aid_docs
 
 theme: 
   name: material
+  font: 
+    text: Quicksand
+    code: Red Hat Mono
+  logo: assets/Terance_Logo.png
   icon:
     repo: fontawesome/brands/git-alt
     admonition:
