@@ -9,8 +9,25 @@ theme:
   name: material
   icon:
     repo: fontawesome/brands/git-alt
+    admonition:
+      note: fontawesome/solid/note-sticky
+      abstract: fontawesome/solid/book
+      info: fontawesome/solid/circle-info
+      tip: fontawesome/solid/bullhorn
+      success: fontawesome/solid/check
+      question: fontawesome/solid/circle-question
+      warning: fontawesome/solid/triangle-exclamation
+      failure: fontawesome/solid/bomb
+      danger: fontawesome/solid/skull
+      bug: fontawesome/solid/robot
+      example: fontawesome/solid/flask
+      quote: fontawesome/solid/quote-left
   features:
     - header.autohide
+    - search.suggest
+    - search.highlight
+    - search.share
+    - navigation.tabs
   palette:
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
@@ -32,37 +49,94 @@ theme:
         icon: material/brightness-4
         name: Switch to system preference
 
-  features:
-    - search.suggest
-    - search.highlight
-    - navigation.tabs
-  
-  plugins:
+plugins:
   - search
   - autorefs
   - tags
-  # TODO: add in the mkdocstrings plugin to deal with the source code from our projects. 
 
-  nav:
+nav:
   - Home: index.md
+  - Architecture:
+      - Overview: architecture/index.md
+      - Design Principles: architecture/design-principles.md
+      - Service Mesh: architecture/service-mesh.md
+  - Projects:
+      - Overview: projects/index.md
+      - Browser Extension:
+        - Overview: projects/browser-extension/index.md
+      - API Services:
+        - Overview: projects/api-app/index.md
+      - User Portal:
+        - Overview: projects/user-portal/index.md
+      - Desktop Application:
+        - Overview: projects/desktop-app/index.md
+  - Engineering Standards:
+      - Overview: engineering/index.md
+      - Getting Started: 
+        - Guide: engineering/dev-setup.md
+        - Tooling: engineering/tooling.md
+      - Style Guide:
+        - Overview: engineering/styleguide/index.md
+      - Documentation:
+        - Overview: engineering/documentation/index.md
+      - Testing and Quality Assurance:
+        - Overview: engineering/testing/index.md
+      - Git Workflow: engineering/git-workflow.md
+  - Infrastructure & Dev Ops:
+      - Overview: deployment/index.md
+      - Deployment Process: deployment/deployment-process.md
+      - Monitoring and Logging: deployment/monitoring-and-logging.md  
+      - Hyperscaler Configuration: deployment/hyperscaler-config.md
+  - Product Overview:
+      - Overview: product/index.md
+      - Release Plan: product/release-plan.md
+      - Features: product/features.md
+      - Sprint Plan: product/sprint-planning.md
+      - Roadmap: product/roadmap.md
   - About: about.md
 
-  extra:
-    consent:
-      title: Cookie consent
-      description: >- 
-        We use cookies to recognize your repeated visits and preferences, as well
-        as to measure the effectiveness of our documentation and whether users
-        find what they're searching for. With your consent, you're helping us to
-        make our documentation better.
+markdown_extensions:
+  - codehilite
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - md_in_html
+  - footnotes
+  - toc:
+      permalink: true
+      toc_depth: 3
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.details
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.tabbed:
+      alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
 
-  markdown_extensions:
-    - codehilite
-    - toc:
-        permalink: true
-    - pymdownx.superfences
-    - pymdownx.details
-    - pymdownx.tabbed
+extra:
+  consent:
+    title: Cookie consent
+    description: >- 
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
 
-  extra_css:
-    - stylesheets/custom.css  # Optional custom styles
+extra_css:
+  - stylesheets/custom.css  # Optional custom styles
