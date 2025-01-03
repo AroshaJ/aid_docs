@@ -1,0 +1,5 @@
+site_name: Terance - Docs
+site_url: https://terance.github.io/aid_docs/
+theme: 
+  name: material
+  
